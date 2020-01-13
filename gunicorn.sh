@@ -15,4 +15,3 @@ fi
 exec gunicorn manager:app \
   -b 0.0.0.0:${port} \
   -w ${NUM_WORKERS}
-  --env ${env}
