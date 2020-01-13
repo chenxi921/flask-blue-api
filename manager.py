@@ -4,15 +4,13 @@
 """
 __author__ = "Space"
 
-
 from app import create_app
 from app.utils.error import APIException
 from app.utils.error_code import ServerError
 from werkzeug.exceptions import HTTPException
 
+app = create_app()
 
-
-app=create_app()
 
 @app.errorhandler(Exception)
 def framework_error(e):
@@ -31,5 +29,6 @@ def framework_error(e):
         else:
             raise e
 
-if __name__=="__main__":
-    app.run(host="0.0.0.0",debug=app.config["DEBUG"],port=8888)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=app.config["DEBUG"], port=8888)

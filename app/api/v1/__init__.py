@@ -4,14 +4,7 @@
 """
 __author__ = "Space"
 
-from flask import jsonify
+from flask import Blueprint
 
-
-
-def api_success_result(data):
-    result = {
-        'errcode': 0,
-        'data': data,
-        'errmsg': ""
-    }
-    return jsonify(result), 201
+api = Blueprint("v1", __name__)
+from app.api.v1 import token
