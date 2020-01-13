@@ -8,8 +8,9 @@ from app import create_app
 from app.utils.error import APIException
 from app.utils.error_code import ServerError
 from werkzeug.exceptions import HTTPException
+import os
 
-app = create_app()
+app = create_app(os.getenv('ENV') or 'dev')
 
 
 @app.errorhandler(Exception)

@@ -7,20 +7,11 @@ from flask import Flask
 from app.utils.limiter import Limiter
 from flask_cors import *
 from app.model.base import db
-import argparse
-
-parser = argparse.ArgumentParser(description='manual to this script')
-parser.add_argument('--env', type=str, default=None)
-args = parser.parse_args()
 
 limiter = Limiter()
 
 
-def create_app():
-    if args:
-        env = args.env
-    else:
-        env = "dev"
+def create_app(env):
     app = Flask(__name__)
     CORS(app, supports_credentials=True)
     app.config.from_object("app.config.%s.secure" % env)
