@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
-"""
-    Created by Space on 2019/12/19 18:47
-"""
-import logging
+import logging, time
+
+file_name = '%s.log' % (time.strftime("%Y-%m-%d"))
 
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
+    filename='logs/%s' % file_name,
     format="[%(asctime)s]-[%(levelname)s]: %(message)s",
 )
 
-logger = logging.getLogger("api.v1")
+logger = logging.getLogger("api")
+
